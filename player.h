@@ -17,7 +17,7 @@ protected:
     int tile;
     std::vector<Property> propertiesOwned;
     std::vector<RailRoad> railroadsOwned;
-    std::vector<Utility> utilitesOwned;
+    std::vector<Utility> utilitiesOwned;
 
 public:
     // constructor
@@ -34,7 +34,7 @@ public:
     int getTile() const;
     std::vector<Property> getProperties();
     std::vector<RailRoad> getRailroads();
-    std::vector<Utility> getUtilites();
+    std::vector<Utility> getUtilities();
 
     // setters
     void setAccount(int amount);
@@ -44,16 +44,18 @@ public:
     // class methods
     void addFunds(int amount);
     void pay(int amount);
-    void addRR(RailRoad rr);
+    void buyRR(RailRoad rr);
     int rrPrice();
-    void addUtil(Utility u);
+    void buyUtil(Utility u);
     int utilPrice(int roll);
-    void addProperty(Property p);
+    void buyProperty(Property p);
+    void mortgageProperty(Property p);
+    void unMortgageProperty(Property p);
     int rent(Property p);
-    int buyHouse(Property p);
-    int sellHouse(Property p);
-    int buyHotel(Property p);
-    int sellHotel(Property p);
+    void buyHouse(Property p);
+    void sellHouse(Property p);
+    void buyHotel(Property p);
+    void sellHotel(Property p);
     bool monopolyOwned(Colors c);
 
 };

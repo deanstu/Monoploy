@@ -3,4 +3,4 @@ project(Monoploy)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Monoploy graphics.cpp player.cpp board.cpp board.h)
+add_executable(Monoploy graphics.cpp player.cpp board.cpp board.h game.cpp game.h)
