@@ -15,11 +15,11 @@ struct Property {
     Colors color;
     std::string name;
     int cost;
-    int houses;
-    bool hotel;
+    int houses = 0;
+    bool hotel = false;
+    bool mortgaged = false;
     std::vector<int> rents;
     int houseCost;
-    bool mortgaged;
 
     // Constructors
     Property(Colors color, std::string name, int cost, std::vector<int> rents, int houseCost);
@@ -44,25 +44,31 @@ struct Property {
 struct RailRoad {
     std::string name;
     int cost = 200;
+    bool mortgaged = false;
 
     // Constructor
     RailRoad(std::string name);
 
     // getter
     int getCost() const;
+    bool isMortgaged() const;
 
+    void mortgage();
 };
 
 struct Utility {
     std::string name;
     int cost = 150;
+    bool mortgaged = false;
 
     // Constructor
     Utility(std::string name);
 
     // getter
     int getCost() const;
+    bool isMortgaged() const;
 
+    void mortgage();
 };
 
 struct CommunityChest {
@@ -74,8 +80,8 @@ struct CommunityChest {
     CommunityChest(std::string words, int deltaMoney, int endTile);
 
     // struct methods
-    void money();
-    void movePlayer();
+    int money();
+    int movePlayer();
 };
 
 struct Chance {
@@ -87,8 +93,8 @@ struct Chance {
     Chance(std::string words, int deltaMoney, int endTile);
 
     // struct methods
-    void money();
-    void movePlayer();
+    int money();
+    int movePlayer();
 };
 
 class Board {
@@ -119,6 +125,8 @@ public:
     void sellHouse();
     void sellHotel();
 
+    // helper methods
+    void readfile();
 };
 
 #endif //MONOPOLY_BOARD_H

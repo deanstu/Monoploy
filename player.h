@@ -18,7 +18,7 @@ protected:
     std::vector<Property> propertiesOwned;
     std::vector<RailRoad> railroadsOwned;
     std::vector<Utility> utilitiesOwned;
-    bool isInJail;
+    bool isInJail = false;
 
 public:
     // constructor
@@ -54,6 +54,10 @@ public:
     void buyProperty(Property p);
     void mortgageProperty(Property p);
     void unMortgageProperty(Property p);
+    void mortgageRR(RailRoad rr);
+    void unMortgageRR(RailRoad rr);
+    void mortgageUtil(Utility u);
+    void unMortgageUtil(Utlity u);
     int rent(Property p);
     void buyHouse(Property p);
     void sellHouse(Property p);

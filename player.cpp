@@ -18,7 +18,6 @@ Player::Player(string name){
 
 Player::Player(int account, string name, int tile) : account(account), tile(tile){
     setName(move(name));
-    isInJail = false;
 }
 
 /********** Getters **********/
@@ -55,7 +54,8 @@ void Player::setName(string playerName) {
     name = std::move(playerName);
 }
 void Player::setTile(int tileNum) {
-    tile = tileNum;
+    if (tileNum > 0)
+        tile = tileNum;
 }
 
 void Player::inJail() {
@@ -123,6 +123,34 @@ void Player::unMortgageProperty(Property p) {
     }
 }
 
+void Player::mortgageRR(RailRoad rr) {
+    if (!(rr.isMortgaged())) {
+        account += 100;
+        rr.mortgage();
+    }
+}
+
+void Player::unMortgageRR(RailRoad rr) {
+    if (account > 110 && rr.isMortgaged()) {
+        account -= 110;
+        rr.mortgage();
+    }
+}
+
+void Player::mortgageUtil(Utility u) {
+    if (!(u.isMortgaged())) {
+        account += 75;
+        u.mortgage();
+    }
+}
+
+void Player::unMortgageUtil(Utility u) {
+    if (account > 83 && u.isMortgaged()) {
+        account -= 83;
+        u.mortgage();
+    }
+}
+
 int Player::rent(Property p) {
     int numHouses = p.getHouses();
     bool hotel = p.ownHotel();
@@ -159,6 +187,7 @@ void Player::buyHotel(Property p) {
         account -= p.getHouseCost();
     }
 }
+
 void Player::sellHotel(Property p) {
     if (p.ownHotel()) {
         account += p.getHouseCost();
@@ -187,4 +216,3 @@ bool Player::monopolyOwned(Colors c) {
             return false;
     }
 }
-

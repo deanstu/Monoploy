@@ -14,8 +14,6 @@ Property::Property(Colors color, string name, int cost, std::vector<int> rents, 
     this->cost = cost;
     this->rents = move(rents);
     this->houseCost = houseCost;
-    houses = 0;
-    hotel = mortgaged = false;
 }
 
 Colors Property::getColor() const {
@@ -75,11 +73,18 @@ void Property::mortgage() {
 
 /********** RailRoad Struct **********/
 RailRoad::RailRoad(std::string name) {
-    this->name = std::move(name);
+    this->name = std::move(name) + " Railroad";
 }
 
 int RailRoad::getCost() const {
     return cost;
+}
+
+void RailRoad::mortgage() {
+    if (mortgaged)
+        mortgaged = false;
+    else
+        mortgaged = true;
 }
 
 /********** Utility Struct **********/
@@ -91,6 +96,51 @@ int Utility::getCost() const {
     return cost;
 }
 
+void Utility::mortgage() {
+    if (mortgaged)
+        mortgaged = false;
+    else
+        mortgaged = true;
+}
 
+/********** Community Chest Struct **********/
+CommunityChest::CommunityChest(std::string words, int deltaMoney, int endTile) {
+    this->words = words;
+    this->deltaMoney = deltaMoney;
+    this->endTile = endTile;
+}
 
+int CommunityChest::money() {
+    return deltaMoney;
+}
 
+int CommunityChest::movePlayer() {
+    return endTile;
+}
+
+/********** Chance Struct **********/
+Chance::Chance(std::string words, int deltaMoney, int endTile) {
+    this->words = words;
+    this->deltaMoney = deltaMoney;
+    this->endTile = endTile;
+}
+
+int Chance::money() {
+    return deltaMoney;
+}
+
+int Chance::movePlayer() {
+    return endTile;
+}
+
+/********** Board Class **********/
+
+/********** Constructors **********/
+Board::Board() {
+    readfile();
+    availRailRoads.push_back(RailRoad("Reading"));
+    availRailRoads.push_back(RailRoad("Pennsylvania"));
+    availRailRoads.push_back(RailRoad("B. & O."));
+    availRailRoads.push_back(RailRoad("Short Line"));
+
+}
