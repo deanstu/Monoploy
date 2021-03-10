@@ -6,12 +6,19 @@
 #define MONOPLOY_PLAYER_H
 
 #include <string>
+#include <vector>
+#include <cmath>
+#include "board.h"
 
 class Player {
 protected:
-    int account{};
+    int account;
     std::string name;
-    int tile{};
+    int tile;
+    std::vector<Property> propertiesOwned;
+    std::vector<RailRoad> railroadsOwned;
+    std::vector<Utility> utilitesOwned;
+
 public:
     // constructor
     Player();
@@ -25,6 +32,9 @@ public:
     int getAccount() const;
     std::string getName() const;
     int getTile() const;
+    std::vector<Property> getProperties();
+    std::vector<RailRoad> getRailroads();
+    std::vector<Utility> getUtilites();
 
     // setters
     void setAccount(int amount);
@@ -33,7 +43,18 @@ public:
 
     // class methods
     void addFunds(int amount);
-    void subtractFunds(int amount);
+    void pay(int amount);
+    void addRR(RailRoad rr);
+    int rrPrice();
+    void addUtil(Utility u);
+    int utilPrice(int roll);
+    void addProperty(Property p);
+    int rent(Property p);
+    int buyHouse(Property p);
+    int sellHouse(Property p);
+    int buyHotel(Property p);
+    int sellHotel(Property p);
+    bool monopolyOwned(Colors c);
 
 };
 
