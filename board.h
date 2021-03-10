@@ -2,11 +2,12 @@
 // Created by deanp on 3/10/2021.
 //
 
-#ifndef MONOPLOY_BOARD_H
-#define MONOPLOY_BOARD_H
+#ifndef MONOPOLY_BOARD_H
+#define MONOPOLY_BOARD_H
 
 #include <string>
 #include <vector>
+#include "player.h"
 
 enum Colors {BROWN, SKY, PURPLE, ORANGE, RED, YELLOW, GREEN, BLUE};
 
@@ -65,11 +66,59 @@ struct Utility {
 };
 
 struct CommunityChest {
+    std::string words;
+    int deltaMoney;
+    int endTile;
 
+    // Constructor
+    CommunityChest(std::string words, int deltaMoney, int endTile);
+
+    // struct methods
+    void money();
+    void movePlayer();
 };
 
 struct Chance {
+    std::string words;
+    int deltaMoney;
+    int endTile;
+
+    // Constructor
+    Chance(std::string words, int deltaMoney, int endTile);
+
+    // struct methods
+    void money();
+    void movePlayer();
+};
+
+class Board {
+protected:
+    int houses = 32;
+    int hotels = 16;
+    std::vector<Chance> chanceDeck;
+    std::vector<CommunityChest> ccDeck;
+    std::vector<Property> availProperties;
+    std::vector<RailRoad> availRailRoads;
+    std::vector<Utility> availUtilities;
+public:
+
+    // Constructor
+    Board();
+
+    // getters
+    int getHouses() const;
+    std::vector<Property> getAvailProp()const;
+    std::vector<RailRoad> getAvailRR()const;
+    std::vector<Utility> getAvailUtil()const;
+
+    // class methods
+    void sellProperty(Property p);
+    void sellRR(RailRoad rr);
+    void sellUtil(Utility u);
+
+    void sellHouse();
+    void sellHotel();
 
 };
 
-#endif //MONOPLOY_BOARD_H
+#endif //MONOPOLY_BOARD_H

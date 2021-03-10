@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.17)
-project(Monoploy)
+project(Monopoly)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Monoploy graphics.cpp player.cpp board.cpp board.h game.cpp game.h)
+add_executable(Monopoly graphics.cpp player.cpp board.cpp game.cpp)
