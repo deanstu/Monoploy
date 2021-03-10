@@ -3,18 +3,22 @@
 //
 #include "player.h"
 
+#include <utility>
+
 using namespace std;
 
 /********** Constructors **********/
-Player::Player() : account(0), tile(0){
+Player::Player(){
+    Player(0,"COM", 0);
 }
 
-Player::Player(string name) : account(0), tile(0){
-    setName(move(name));
+Player::Player(string name){
+    Player(0,move(name),0);
 }
 
 Player::Player(int account, string name, int tile) : account(account), tile(tile){
     setName(move(name));
+    isInJail = false;
 }
 
 /********** Getters **********/
@@ -52,6 +56,14 @@ void Player::setName(string playerName) {
 }
 void Player::setTile(int tileNum) {
     tile = tileNum;
+}
+
+void Player::inJail() {
+    isInJail = true;
+}
+
+void Player::outJail() {
+    isInJail = false;
 }
 
 /********** Class Methods **********/

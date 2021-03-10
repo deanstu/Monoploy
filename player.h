@@ -18,6 +18,7 @@ protected:
     std::vector<Property> propertiesOwned;
     std::vector<RailRoad> railroadsOwned;
     std::vector<Utility> utilitiesOwned;
+    bool isInJail;
 
 public:
     // constructor
@@ -40,6 +41,8 @@ public:
     void setAccount(int amount);
     void setName(std::string name);
     void setTile(int tileNum);
+    void inJail();
+    void outJail();
 
     // class methods
     void addFunds(int amount);

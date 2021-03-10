@@ -43,25 +43,25 @@ struct Property {
 
 struct RailRoad {
     std::string name;
-    int cost;
+    int cost = 200;
 
     // Constructor
-    RailRoad(std::string name, int cost);
+    RailRoad(std::string name);
 
     // getter
-    int getCost();
+    int getCost() const;
 
 };
 
 struct Utility {
     std::string name;
-    int cost;
+    int cost = 150;
 
     // Constructor
-    Utility(std::string name, int cost);
+    Utility(std::string name);
 
     // getter
-    int getCost();
+    int getCost() const;
 
 };
 
