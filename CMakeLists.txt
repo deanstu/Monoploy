@@ -3,4 +3,4 @@ project(Monoploy)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Monoploy player.h graphics.cpp graphics.h)
+add_executable(Monoploy graphics.cpp player.cpp)
