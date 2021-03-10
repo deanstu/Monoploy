@@ -7,8 +7,6 @@
 
 #include <string>
 
-using namespace std;
-
 class Player {
 protected:
     int account{};
@@ -17,20 +15,20 @@ protected:
 public:
     // constructor
     Player();
-    explicit Player(string name);
-    Player(int account, string name, int tile);
+    explicit Player(std::string name);
+    Player(int account, std::string name, int tile);
 
     // destructor
     virtual ~Player() = default;
 
     // getters
     int getAccount() const;
-    string getName() const;
+    std::string getName() const;
     int getTile() const;
 
     // setters
     void setAccount(int amount);
-    void setName(string name);
+    void setName(std::string name);
     void setTile(int tileNum);
 
     // class methods
