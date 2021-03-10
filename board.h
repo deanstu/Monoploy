@@ -80,8 +80,8 @@ struct CommunityChest {
     CommunityChest(std::string words, int deltaMoney, int endTile);
 
     // struct methods
-    int money();
-    int movePlayer();
+    int money() const;
+    int movePlayer() const;
 };
 
 struct Chance {
@@ -93,8 +93,8 @@ struct Chance {
     Chance(std::string words, int deltaMoney, int endTile);
 
     // struct methods
-    int money();
-    int movePlayer();
+    int money() const;
+    int movePlayer() const;
 };
 
 class Board {

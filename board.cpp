@@ -73,11 +73,15 @@ void Property::mortgage() {
 
 /********** RailRoad Struct **********/
 RailRoad::RailRoad(std::string name) {
-    this->name = std::move(name) + " Railroad";
+    this->name = move(name) + " Railroad";
 }
 
 int RailRoad::getCost() const {
     return cost;
+}
+
+bool RailRoad::isMortgaged() const {
+    return mortgaged;
 }
 
 void RailRoad::mortgage() {
@@ -89,11 +93,15 @@ void RailRoad::mortgage() {
 
 /********** Utility Struct **********/
 Utility::Utility(std::string name) {
-    this->name = name;
+    this->name = move(name);
 }
 
 int Utility::getCost() const {
     return cost;
+}
+
+bool Utility::isMortgaged() const {
+    return mortgaged;
 }
 
 void Utility::mortgage() {
@@ -105,31 +113,31 @@ void Utility::mortgage() {
 
 /********** Community Chest Struct **********/
 CommunityChest::CommunityChest(std::string words, int deltaMoney, int endTile) {
-    this->words = words;
+    this->words = move(words);
     this->deltaMoney = deltaMoney;
     this->endTile = endTile;
 }
 
-int CommunityChest::money() {
+int CommunityChest::money() const {
     return deltaMoney;
 }
 
-int CommunityChest::movePlayer() {
+int CommunityChest::movePlayer() const {
     return endTile;
 }
 
 /********** Chance Struct **********/
 Chance::Chance(std::string words, int deltaMoney, int endTile) {
-    this->words = words;
+    this->words = move(words);
     this->deltaMoney = deltaMoney;
     this->endTile = endTile;
 }
 
-int Chance::money() {
+int Chance::money() const {
     return deltaMoney;
 }
 
-int Chance::movePlayer() {
+int Chance::movePlayer() const {
     return endTile;
 }
 
@@ -142,5 +150,9 @@ Board::Board() {
     availRailRoads.push_back(RailRoad("Pennsylvania"));
     availRailRoads.push_back(RailRoad("B. & O."));
     availRailRoads.push_back(RailRoad("Short Line"));
+
+    availUtilities.push_back(Utility("Electric Company"));
+    availUtilities.push_back(Utility("Water Works"));
+
 
 }
